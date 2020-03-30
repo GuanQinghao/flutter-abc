@@ -1,110 +1,179 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout/my_0_container.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyHomePage());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyHomePage extends StatelessWidget {
+  // 数据源
+  final List<PageGroup> groups = [
+    PageGroup(
+      title: '基础布局',
+      items: [
+        PageItem('Container 容器布局示例', '/01'),
+        PageItem('Center 居中布局', '/02'),
+        PageItem('Padding 填充布局', '/03'),
+        PageItem('Align 对齐布局', '/04'),
+        PageItem('Row 水平布局', '/05'),
+        PageItem('Column 垂直布局示例', '/06'),
+        PageItem('FittedBox 缩放布局', '/07'),
+        PageItem('Stack/Alignment 布局', '/08'),
+        PageItem('Stack/Positioned 布局', '/09'),
+        PageItem('IndexedStack 布局', '/0a'),
+        PageItem('OverflowBox 溢出父容器显示布局', '/0b'),
+      ],
+    ),
+    PageGroup(
+      title: '宽高尺寸布局',
+      items: [
+        PageItem('SizedBox 设置具体尺寸布局示例', '/11'),
+        PageItem('ConstrainedBox 限定最大最小宽高布局', '/12'),
+        PageItem('LimitedBox 限定最大宽高布局', '/13'),
+        PageItem('AspectRatio 调整宽高比布局', '/14'),
+        PageItem('FractionallySizedBox 百分比布局', '/15'),
+      ],
+    ),
+    PageGroup(
+      title: '列表及表格布局',
+      items: [
+        PageItem('ListView 列表布局示例', '/21'),
+        PageItem('GridView 网格布局', '/22'),
+        PageItem('Table 表格布局', '/23'),
+      ],
+    ),
+    PageGroup(
+      title: '其他布局',
+      items: [
+        PageItem('Transform 矩阵转换布局示例', '/31'),
+        PageItem('Baseline 基准线布局', '/32'),
+        PageItem('Offstage 显示/隐藏布局', '/33'),
+        PageItem('Wrap 按宽高自动换行布局', '/34'),
+      ],
+    ),
+    PageGroup(
+      title: '布局综合示例',
+      items: [
+        PageItem('布局综合示例', '/41'),
+      ],
+    ),
+  ];
+  // 路由
+  final Map<String, WidgetBuilder> routes = {
+    '/01': (BuildContext context) => My0xContainer(),
+  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+      title: 'Flutter 页面布局学习示例',
+      // 注册路由
+      routes: routes,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter 页面布局学习示例'),
+        ),
+        body: MyLayoutExpansionPanel(
+          groups: groups,
+        ),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+// 页面组
+class PageGroup {
+  String title;
+  List<PageItem> items;
+  bool isExpanded;
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+  PageGroup({
+    this.title,
+    this.items,
+    this.isExpanded = false,
+  });
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+// 页面项
+class PageItem {
+  String title;
+  String route;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  PageItem(
+    this.title,
+    this.route,
+  );
+}
+
+class MyLayoutExpansionPanel extends StatefulWidget {
+  final List<PageGroup> groups;
+
+  const MyLayoutExpansionPanel({Key key, @required this.groups})
+      : super(key: key);
+
+  @override
+  _MyLayoutExpansionPanelState createState() =>
+      _MyLayoutExpansionPanelState(groups);
+}
+
+class _MyLayoutExpansionPanelState extends State<MyLayoutExpansionPanel> {
+  final List<PageGroup> _groups;
+
+  _MyLayoutExpansionPanelState(this._groups);
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+    return SingleChildScrollView(
+      child: Container(
+        // .radio 可以实现只展开一组数据
+        child: ExpansionPanelList.radio(
+          expansionCallback: (int index, bool isExpanded) {
+            setState(() {
+              _groups[index].isExpanded = !isExpanded;
+            });
+          },
+          children: _groups.map<ExpansionPanel>((PageGroup item) {
+            List<PageItem> items = item.items;
+
+            return ExpansionPanelRadio(
+              canTapOnHeader: true,
+              value: item.title,
+              headerBuilder: (BuildContext context, bool isExpanded) {
+                return ListTile(
+                  title: Text(item.title),
+                );
+              },
+              body: Container(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  // 数据个数
+                  itemCount: items.length,
+                  // 构建列表的子视图
+                  itemBuilder: (context, index) {
+                    // 页面项
+                    PageItem item = items[index];
+                    // 标题
+                    String title = item.title;
+                    // 路由-> 跳转页面
+                    String route = item.route;
+
+                    return ListTile(
+                      leading: Icon(Icons.crop_square),
+                      title: Text('$title'),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14.0,
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(context, '$route');
+                      },
+                    );
+                  },
+                ),
+              ),
+            );
+          }).toList(),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
