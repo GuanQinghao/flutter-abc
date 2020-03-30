@@ -87,11 +87,11 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter 学习示例',
+      title: 'Flutter 组件学习示例',
       routes: myRoutes,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter 学习示例'),
+          title: Text('Flutter 组件学习示例'),
         ),
         body: ListView.builder(
           // 数据个数
