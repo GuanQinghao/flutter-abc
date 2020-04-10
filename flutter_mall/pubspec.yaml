@@ -26,6 +26,9 @@ dependencies:
   shared_preferences: ^0.5.6+3
   # 文件管理
   path_provider: ^1.6.5
+  # cookies管理
+  cookie_jar: ^1.0.1
+  dio_cookie_manager: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

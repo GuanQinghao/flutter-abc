@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mall/pages/common/search_bar.dart';
 
 class Department extends StatefulWidget {
   @override
@@ -9,15 +10,8 @@ class _DepartmentState extends State<Department> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text('分类'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+      appBar: SearchBar(
+        height: 56.0,
       ),
       body: Container(),
     );

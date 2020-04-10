@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mall/models/product_model.dart';
 
 class HomeFavouriteProductsWidget extends StatelessWidget {
+  // 商品列表
+  final List<ProductModel> items;
+
+  const HomeFavouriteProductsWidget({Key key, this.items}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final double ratio = 0.66;
@@ -21,9 +27,11 @@ class HomeFavouriteProductsWidget extends StatelessWidget {
             crossAxisCount: 2,
             childAspectRatio: ratio,
           ),
-          itemCount: 6,
+          itemCount: items.length,
           itemBuilder: (context, index) {
-            return _FavouriteProductWidget();
+            return _FavouriteProductWidget(
+              item: items[index],
+            );
           },
         ),
       ),
@@ -33,6 +41,11 @@ class HomeFavouriteProductsWidget extends StatelessWidget {
 
 // 猜你喜欢商品视图
 class _FavouriteProductWidget extends StatelessWidget {
+  // 商品信息模型
+  final ProductModel item;
+
+  const _FavouriteProductWidget({Key key, this.item}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -64,7 +77,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                         child: AspectRatio(
                           aspectRatio: 1.0,
                           child: Image(
-                            image: AssetImage('images/product.png'),
+                            image: NetworkImage(item.defaultPicUrl),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -74,7 +87,8 @@ class _FavouriteProductWidget extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
                       child: Text(
-                        '梦洁出品1.5m1.8m床舒柔手感床上用品舒柔手感床上用品',
+                        // '梦洁出品1.5m1.8m床舒柔手感床上用品舒柔手感床上用品',
+                        item.itemTitle,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -92,7 +106,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 5.0, right: 5.0),
                             child: Text(
-                              '¥389',
+                              '¥' + item.marketPrice.toString(),
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: Color.fromARGB(255, 247, 0, 47),
@@ -101,7 +115,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                           ),
                           Container(
                             child: Text(
-                              '门店价¥489',
+                              '门店价¥' + item.wholesalePrice.toString(),
                               style: TextStyle(
                                 fontSize: 10.0,
                                 fontWeight: FontWeight.bold,
@@ -147,7 +161,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(),
                             child: Text(
-                              '月销 999+',
+                              '月销' + item.salesNum.toString(),
                               style: TextStyle(
                                 fontSize: 11.0,
                                 color: Color.fromARGB(255, 135, 135, 135),

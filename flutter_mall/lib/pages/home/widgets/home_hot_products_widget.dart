@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mall/models/product_model.dart';
 
 class HomeHotProductsWidget extends StatelessWidget {
+  // 商品列表
+  final List<ProductModel> items;
+
+  const HomeHotProductsWidget({Key key, this.items}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,22 +31,19 @@ class HomeHotProductsWidget extends StatelessWidget {
                 _HotAdImageWidget(),
                 Container(
                   height: 265,
-                  child: GridView(
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 5.0,
                       mainAxisSpacing: 5.0,
                       childAspectRatio: 108.0 / 130.0,
                     ),
-                    physics: NeverScrollableScrollPhysics(),
-                    children: <Widget>[
-                      _HotProductWidget(),
-                      _HotProductWidget(),
-                      _HotProductWidget(),
-                      _HotProductWidget(),
-                      _HotProductWidget(),
-                      _HotProductWidget(),
-                    ],
+                    itemBuilder: (context, index) {
+                      return _HotProductWidget(
+                        item: items[index],
+                      );
+                    },
                   ),
                 ),
               ],
@@ -81,6 +84,11 @@ class _HotAdImageWidget extends StatelessWidget {
 }
 
 class _HotProductWidget extends StatelessWidget {
+  // 商品信息模型
+  final ProductModel item;
+
+  const _HotProductWidget({Key key, this.item}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -91,8 +99,8 @@ class _HotProductWidget extends StatelessWidget {
         color: Color(0xffeeeeee),
         child: Column(
           children: <Widget>[
-            Image.asset(
-              'images/product.png',
+            Image.network(
+              item.defaultPicUrl,
               height: 80.0,
               width: 80.0,
               fit: BoxFit.fill,
@@ -101,7 +109,7 @@ class _HotProductWidget extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
               alignment: Alignment.centerLeft,
               child: Text(
-                '山东烟台大樱桃山东烟台大樱桃',
+                item.itemTitle,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
@@ -115,7 +123,7 @@ class _HotProductWidget extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
               alignment: Alignment.centerLeft,
               child: Text(
-                '¥36',
+                '¥' + item.marketPrice.toString(),
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
