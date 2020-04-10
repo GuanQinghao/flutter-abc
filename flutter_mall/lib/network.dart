@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // 基础授权token
-String basicToken = 'Basic Zm9vdGJhbGxfbWF0Y2g6YXBw';
+const String basicToken = 'Basic Zm9vdGJhbGxfbWF0Y2g6YXBw';
 // 接口地址
-String baseURL = 'https://wineduoduo.com/wine-app';
+const String baseURL = 'https://wineduoduo.com/wine-app';
 
 class SharedNetwork {
   // 单例
