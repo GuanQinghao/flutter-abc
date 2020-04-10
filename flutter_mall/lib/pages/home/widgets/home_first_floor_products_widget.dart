@@ -189,7 +189,7 @@ class _SnappedProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/GoodsDetail');
+        Navigator.pushNamed(context, '/product');
       },
       child: Stack(
         children: <Widget>[

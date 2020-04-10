@@ -183,7 +183,7 @@ class _FlashSaleProductWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context, '/GoodsDetail');
+        Navigator.pushNamed(context, '/product');
       },
     );
   }
@@ -264,7 +264,7 @@ class _HomeDomesticProductsWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context, '/GoodsDetail');
+        Navigator.pushNamed(context, '/product');
       },
     );
   }

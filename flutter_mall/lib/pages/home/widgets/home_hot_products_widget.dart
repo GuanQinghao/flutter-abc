@@ -32,6 +32,7 @@ class HomeHotProductsWidget extends StatelessWidget {
                 Container(
                   height: 265,
                   child: GridView.builder(
+                    itemCount: (items == null) ? 0 : items.length,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
@@ -93,7 +94,7 @@ class _HotProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/GoodsDetail');
+        Navigator.pushNamed(context, '/product');
       },
       child: Container(
         color: Color(0xffeeeeee),

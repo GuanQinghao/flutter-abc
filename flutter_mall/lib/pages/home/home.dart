@@ -39,9 +39,11 @@ class _HomeState extends State<Home> {
     ProductModel().fetchProducts(
       parameters: query,
       success: (List<ProductModel> products) async {
-        setState(() {
-          items = products;
-        });
+        if (mounted) {
+          setState(() {
+            items = products;
+          });
+        }
       },
       fail: () {
         Toast.toast(context, '获取商品列表失败');
@@ -90,8 +92,8 @@ class _HomeState extends State<Home> {
   @override
   void dispose() {
     // 内存释放
-    _controller.dispose();
     super.dispose();
+    _controller.dispose();
   }
 
   @override

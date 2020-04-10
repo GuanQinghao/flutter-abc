@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_mall/pages/home/product.dart';
 import 'pages/cart/cart.dart';
 import 'pages/department/department.dart';
 import 'pages/home/home.dart';
@@ -14,6 +14,7 @@ final Map<String, WidgetBuilder> routes = {
   '/': (BuildContext context) => Tabs(),
   '/login': (BuildContext context) => Login(),
   '/home': (BuildContext context) => Home(),
+  '/product': (BuildContext context) => Product(),
   '/department': (BuildContext context) => Department(),
   '/cart': (BuildContext context) => Cart(),
   '/me': (BuildContext context) => Me(),

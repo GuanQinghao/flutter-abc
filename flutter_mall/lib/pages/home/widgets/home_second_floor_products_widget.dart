@@ -93,7 +93,7 @@ class _BestProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/GoodsDetail');
+        Navigator.pushNamed(context, '/product');
       },
       child: Container(
         padding: EdgeInsets.all(10.0),
@@ -172,7 +172,7 @@ class _MostProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/GoodsDetail');
+        Navigator.pushNamed(context, '/product');
       },
       child: Container(
         height: 120,

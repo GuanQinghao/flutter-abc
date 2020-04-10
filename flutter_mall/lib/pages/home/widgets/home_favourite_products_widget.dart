@@ -27,7 +27,7 @@ class HomeFavouriteProductsWidget extends StatelessWidget {
             crossAxisCount: 2,
             childAspectRatio: ratio,
           ),
-          itemCount: items.length,
+          itemCount: (items == null) ? 0 : items.length,
           itemBuilder: (context, index) {
             return _FavouriteProductWidget(
               item: items[index],
@@ -50,7 +50,7 @@ class _FavouriteProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/GoodsDetail');
+        Navigator.pushNamed(context, '/product');
       },
       child: Container(
         padding: EdgeInsets.all(5.0),
