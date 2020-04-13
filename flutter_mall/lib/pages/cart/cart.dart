@@ -6,313 +6,264 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  bool _isSelectAll = false;
-  bool _manageButtonState = false;
+  // 是否全选
+  bool _isSelectedAll = false;
+  // 是否是编辑状态
+  bool _editable = false;
+
+  Map<String, dynamic> products = <String, dynamic>{
+    'title': '潮男长袖T恤-李宁长袖T恤男士2020新款BADFIVE篮球系列圆领宽松休闲针织运动服',
+    'image': 'images/product.png',
+    'price': 299.00,
+    'count': 2,
+    'isSelected': 1,
+  };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white70,
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          title: Text(
-            '购物车',
-            style: TextStyle(color: Colors.black),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 248, 7, 53),
+        centerTitle: true,
+        title: Text(
+          '购物车',
+          style: TextStyle(
+            fontSize: 17.0,
+            color: Colors.white,
           ),
-          actions: <Widget>[
-            FlatButton(
-                onPressed: () {
-                  setState(() {
-                    this._manageButtonState = !this._manageButtonState;
-                  });
-                },
-                child: Text(
-                  !_manageButtonState ? '管理' : '完成',
-                  style: TextStyle(fontSize: 18),
-                ))
-          ],
         ),
-        body: Column(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                child: ListView(
-                  children: _listViewWidgets(),
-                  padding: EdgeInsets.only(bottom: 10),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              setState(() {
+                _editable = !_editable;
+              });
+            },
+            child: Container(
+              child: Text(
+                _editable ? '完成' : '编辑',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: Colors.white,
                 ),
-                width: double.infinity,
-                color: Colors.white,
               ),
             ),
-            Row(
+          ),
+        ],
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              color: Color(0xFFEEEEEE),
+              padding: EdgeInsets.only(
+                bottom: 10.0,
+              ),
+              child: ListView(
+                children: <Widget>[
+                  _CartProductWidget(
+                    product: products,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            height: 56.0,
+            // 左右边距
+            padding: EdgeInsets.only(
+              right: 10.0,
+            ),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  width: 1.0,
+                  color: Colors.grey[300],
+                ),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    border:
-                        Border(top: BorderSide(width: 0.5, color: Colors.grey)),
-                    color: Colors.white,
-                  ),
-                  padding: EdgeInsets.only(left: 10, right: 10),
-                  width: MediaQuery.of(context).size.width,
-                  height: 50,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      FlatButton.icon(
-                          onPressed: () {
-                            setState(() {
-                              this._isSelectAll = !this._isSelectAll;
-                            });
-                          },
-                          icon: Icon(this._isSelectAll
+                // 全选按钮
+                FlatButton(
+                  onPressed: () {},
+                  child: Container(
+                    width: 70.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Icon(
+                          _isSelectedAll
                               ? Icons.radio_button_checked
-                              : Icons.radio_button_unchecked),
-                          label: Text('全选')),
-                      Row(
-                        children: _bottomWidgetList(),
-                      )
-                    ],
+                              : Icons.radio_button_unchecked,
+                        ),
+                        Text('全选'),
+                      ],
+                    ),
                   ),
-                )
+                ),
+
+                // 合计金额
+                Container(
+                  child: Offstage(
+                    offstage: _editable,
+                    child: RichText(
+                      text: TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: '合计:',
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                          TextSpan(
+                            text: '￥350.00',
+                            style: TextStyle(
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                Container(
+                  child: RaisedButton(
+                    onPressed: () {
+                      setState(() {
+                        _editable = !_editable;
+                      });
+                    },
+                    child: Text(
+                      '结算',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    color: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                ),
               ],
             ),
-          ],
-        ));
-  }
-
-  List<Widget> _bottomWidgetList() {
-    List<Widget> tempList = List();
-    tempList.clear();
-    if (!_manageButtonState) {
-      Widget column = Column(
-        children: <Widget>[
-          RichText(
-              text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(
-                text: '合计:',
-                style: TextStyle(color: Colors.black),
-              ),
-              TextSpan(text: '￥350.0', style: TextStyle(color: Colors.red)),
-            ],
-          )),
-          Text(
-            '优惠券减￥30',
-            style: TextStyle(color: Colors.red),
-          )
-        ],
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
-      );
-      Widget sizeBox = SizedBox(
-        width: 10,
-      );
-      Widget button = RaisedButton(
-        onPressed: () {},
-        child: Text(
-          '结算',
-          style: TextStyle(color: Colors.white),
-        ),
-        color: Colors.red,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
-        ),
-      );
-      tempList.add(column);
-      tempList.add(sizeBox);
-      tempList.add(button);
-    } else {
-      Widget collectButton = FlatButton(
-        onPressed: null,
-        child: Text('移入收藏夹'),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.grey, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(25.0)),
-        ),
-      );
-      tempList.add(collectButton);
-
-      Widget sizeBox = SizedBox(
-        width: 10,
-      );
-      tempList.add(sizeBox);
-
-      Widget delButton = FlatButton(
-        onPressed: null,
-        child: Text(
-          '删除(1)',
-          style: TextStyle(color: Colors.red),
-        ),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.red, width: 0.5),
-          borderRadius: BorderRadius.all(Radius.circular(25.0)),
-        ),
-      );
-      tempList.add(delButton);
-    }
-    return tempList;
-  }
-
-  List _dataList = [];
-
-  List<Widget> _listViewWidgets() {
-    List<Widget> tempList = List();
-    tempList.clear();
-    for (int i = 0; i < this._dataList.length; i++) {
-      Widget card = Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        margin: EdgeInsets.all(10),
-        color: Colors.white,
-        child: Column(
-          children: _subCell(i),
-        ),
-      );
-      tempList.add(card);
-    }
-    return this._dataList.length > 0 ? tempList : [Text('')];
-  }
-
-  List<Widget> _subCell(int index) {
-    List<Widget> tempList = List();
-    tempList.clear();
-    Map storeMap = this._dataList[index];
-    Widget storeWidget = Container(
-      child: Row(
-        children: <Widget>[
-          Container(
-            child: IconButton(
-                icon: Icon(Icons.radio_button_unchecked), onPressed: () {}),
-            width: 30,
-            margin: EdgeInsets.only(left: 5),
           ),
-          FlatButton(
-              onPressed: () {},
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.home),
-                  Text(storeMap['sellerName']),
-                  Icon(Icons.chevron_right)
-                ],
-              )),
         ],
       ),
     );
-    tempList.add(storeWidget);
-    List subValueList = storeMap['cartItems'];
-    for (int i = 0; i < subValueList.length; i++) {
-      Map subValue = subValueList[i];
-      Widget subWidget = Container(
-        padding: EdgeInsets.only(right: 10, bottom: 10),
-        child: GestureDetector(
+  }
+}
+
+class _CartProductWidget extends StatelessWidget {
+  // 购物车中的商品
+  final Map<String, dynamic> product;
+
+  const _CartProductWidget({Key key, this.product}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // 商品名称
+    String _title = product['title'];
+    // 商品图片
+    String _image = product['image'];
+    // 商品价格
+    double _price = product['price'];
+    // 商品数量
+    int _count = product['count'];
+    // 是否选中
+    bool _isSelected = (0 == product['isSelected']);
+
+    return Container(
+      padding: EdgeInsets.only(
+        top: 10.0,
+        left: 10.0,
+        right: 10.0,
+      ),
+      color: Colors.transparent,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(8.0),
+          ),
+        ),
+        child: Container(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.radio_button_unchecked), onPressed: () {}),
-              Image.network(
-                subValue['picUrl'],
-                height: 100,
-                width: 100,
+              // 选中按钮
+              Container(
+                child: IconButton(
+                  icon: Icon(
+                    _isSelected
+                        ? Icons.radio_button_checked
+                        : Icons.radio_button_unchecked,
+                    size: 20.0,
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+              // 商品图片
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 10.0,
+                  bottom: 10.0,
+                ),
+                child: Image.asset(
+                  'images/product.png',
+                  height: 90.0,
+                  width: 90.0,
+                  fit: BoxFit.cover,
+                ),
               ),
               Expanded(
-                  child: Container(
-                margin: EdgeInsets.all(10),
-                height: 100,
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      subValue['itemName'],
-                      maxLines: 2,
-                    ),
-                    Text(subValue['skuName']),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          '￥${subValue['amount']}',
-                          style: TextStyle(color: Colors.red),
-                        ),
-                        Container(
-                          width: 80,
-                          height: 28,
-                          padding: EdgeInsets.only(left: 5, right: 5),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.all(Radius.circular(14)),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Expanded(
-                                  child: Container(
-                                    child: GestureDetector(
-                                      child: Text(
-                                        '-',
-                                        style: TextStyle(fontSize: 18),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      onTap: () {
-                                        setState(() {
-                                          subValue["quantity"] =
-                                              subValue["quantity"] == 1
-                                                  ? 1
-                                                  : subValue["quantity"] - 1;
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  flex: 1),
-                              VerticalDivider(
-                                width: 1,
-                                color: Colors.grey,
-                              ),
-                              Expanded(
-                                  child: Container(
-                                    child: Text(
-                                      '${subValue["quantity"]}',
-                                      style: TextStyle(fontSize: 14),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  flex: 1),
-                              VerticalDivider(
-                                width: 1,
-                                color: Colors.grey,
-                              ),
-                              Expanded(
-                                  child: Container(
-                                    child: GestureDetector(
-                                      child: Icon(Icons.add, size: 14),
-                                      onTap: () {
-                                        setState(() {
-                                          subValue["quantity"] =
-                                              subValue["quantity"] + 1;
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  flex: 1),
-                            ],
+                flex: 2,
+                child: Container(
+                  height: 110.0,
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          _title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 16.0,
                           ),
                         ),
-                      ],
-                    ),
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              '¥$_price',
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            ),
+                            Container(
+                              child: Text('x$_count'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              )),
+              ),
             ],
           ),
-          onTap: () {
-            Navigator.pushNamed(context, '/product');
-          },
         ),
-      );
-      tempList.add(subWidget);
-    }
-    return tempList;
+      ),
+    );
   }
 }
