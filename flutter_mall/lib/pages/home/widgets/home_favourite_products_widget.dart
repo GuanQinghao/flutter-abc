@@ -48,6 +48,17 @@ class _FavouriteProductWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 商品名称
+    String title = item.itemTitle ?? '商品';
+    // 商品价格
+    String price =
+        (null != item.marketPrice) ? item.marketPrice.toString() : '0.0';
+    // 门店价
+    String salePrice =
+        (null != item.wholesalePrice) ? item.wholesalePrice.toString() : '0.0';
+    // 商品销量
+    String count = (null != item.salesNum) ? item.salesNum.toString() : '0';
+
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/product');
@@ -87,8 +98,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
                       child: Text(
-                        // '梦洁出品1.5m1.8m床舒柔手感床上用品舒柔手感床上用品',
-                        item.itemTitle,
+                        title,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -106,7 +116,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 5.0, right: 5.0),
                             child: Text(
-                              '¥' + item.marketPrice.toString(),
+                              '¥' + price,
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: Color.fromARGB(255, 247, 0, 47),
@@ -115,7 +125,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                           ),
                           Container(
                             child: Text(
-                              '门店价¥' + item.wholesalePrice.toString(),
+                              '门店价¥' + salePrice,
                               style: TextStyle(
                                 fontSize: 10.0,
                                 fontWeight: FontWeight.bold,
@@ -161,7 +171,7 @@ class _FavouriteProductWidget extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(),
                             child: Text(
-                              '月销' + item.salesNum.toString(),
+                              '月销' + count,
                               style: TextStyle(
                                 fontSize: 11.0,
                                 color: Color.fromARGB(255, 135, 135, 135),

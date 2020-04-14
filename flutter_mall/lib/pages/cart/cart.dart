@@ -11,6 +11,8 @@ class _CartState extends State<Cart> {
   // 是否是编辑状态
   bool _editable = false;
 
+  List<Map<String, dynamic>> items = [];
+
   Map<String, dynamic> products = <String, dynamic>{
     'title': '潮男长袖T恤-李宁长袖T恤男士2020新款BADFIVE篮球系列圆领宽松休闲针织运动服',
     'image': 'images/product.png',
@@ -21,6 +23,22 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
+    // 生成商品
+    Map<String, dynamic> _getProducts() {
+      return <String, dynamic>{
+        'title': '潮男长袖T恤-李宁长袖T恤男士2020新款BADFIVE篮球系列圆领宽松休闲针织运动服',
+        'image': 'images/product.png',
+        'price': 299.00,
+        'count': 2,
+        'isSelected': 1,
+      };
+    }
+
+    items.add(_getProducts());
+    items.add(_getProducts());
+    items.add(_getProducts());
+    items.add(_getProducts());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 248, 7, 53),
@@ -60,12 +78,13 @@ class _CartState extends State<Cart> {
               padding: EdgeInsets.only(
                 bottom: 10.0,
               ),
-              child: ListView(
-                children: <Widget>[
-                  _CartProductWidget(
-                    product: products,
-                  ),
-                ],
+              child: ListView.builder(
+                itemCount: items.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _CartProductWidget(
+                    product: items[index],
+                  );
+                },
               ),
             ),
           ),
