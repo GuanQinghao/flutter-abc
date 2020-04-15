@@ -311,7 +311,10 @@ class _DepartmentState extends State<Department>
                                       return GestureDetector(
                                         onTap: () {
                                           Navigator.pushNamed(
-                                              context, '/product');
+                                            context,
+                                            '/products',
+                                            arguments: subItem,
+                                          );
                                         },
                                         child: Container(
                                           padding: EdgeInsets.only(
