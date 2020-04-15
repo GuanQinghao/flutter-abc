@@ -6,7 +6,8 @@ class Department extends StatefulWidget {
   _DepartmentState createState() => _DepartmentState();
 }
 
-class _DepartmentState extends State<Department> {
+class _DepartmentState extends State<Department>
+    with AutomaticKeepAliveClientMixin {
   // 选中的一级分类的索引值, 默认0
   int departmentIndex = 0;
   // 一级分类
@@ -38,7 +39,6 @@ class _DepartmentState extends State<Department> {
     'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1098255912,893638375&fm=26&gp=0.jpg',
     'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1558734614,2571467604&fm=26&gp=0.jpg',
   ];
-
   // 二级分类
   List data = [
     {
@@ -46,22 +46,27 @@ class _DepartmentState extends State<Department> {
       'data': [
         {
           'image':
-              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '饼干高点',
         },
         {
-          'image': '',
+          'image':
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '糖果',
         },
         {
-          'image': '',
+          'image':
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '肉类零食',
         },
         {
-          'image': '',
+          'image':
+              'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2280544595,1441228656&fm=11&gp=0.jpg',
           'title': '薯条饼干',
         },
       ],
+    },
+    {
       'title': '冲调饮料',
       'data': [
         {
@@ -70,55 +75,68 @@ class _DepartmentState extends State<Department> {
           'title': '冲调饮品',
         },
         {
-          'image': '',
+          'image':
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '绿茶',
         },
         {
-          'image': '',
+          'image':
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '花茶',
         },
         {
-          'image': '',
+          'image':
+              'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2280544595,1441228656&fm=11&gp=0.jpg',
           'title': '茉莉茶',
         },
         {
-          'image': '',
+          'image':
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '红茶',
         },
         {
-          'image': '',
+          'image':
+              'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2280544595,1441228656&fm=11&gp=0.jpg',
           'title': '白茶',
         },
         {
-          'image': '',
+          'image':
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '黑茶',
         },
         {
-          'image': '',
+          'image':
+              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
           'title': '其他',
         },
       ],
+    },
+    {
       'title': '热门品牌',
       'data': [
         {
           'image':
-              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
+              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=565066516,134157532&fm=11&gp=0.jpg',
           'title': '5G手机',
         },
         {
-          'image': '',
+          'image':
+              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=947636479,2923560241&fm=11&gp=0.jpg',
           'title': '游戏手机',
         },
         {
-          'image': '',
+          'image':
+              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=565066516,134157532&fm=11&gp=0.jpg',
           'title': '拍照手机',
         },
         {
-          'image': '',
+          'image':
+              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=947636479,2923560241&fm=11&gp=0.jpg',
           'title': '老人机',
         },
         {
-          'image': '',
+          'image':
+              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=947636479,2923560241&fm=11&gp=0.jpg',
           'title': '学生机',
         },
       ],
@@ -148,7 +166,11 @@ class _DepartmentState extends State<Department> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: SearchBar(
         height: 56.0,
@@ -212,7 +234,7 @@ class _DepartmentState extends State<Department> {
                       child: Container(
                         padding: EdgeInsets.all(15.0),
                         child: Image.network(
-                          'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1725340245,2397117074&fm=26&gp=0.jpg',
+                          departmentImages[departmentIndex],
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -221,8 +243,15 @@ class _DepartmentState extends State<Department> {
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          // 二级分类数量
-                          int _count = 10;
+                          // 二级分类
+                          Map item = data[index];
+                          // 二级分类标题
+                          String title = item['title'];
+                          // 二级分类子类数组
+                          List subItems = item['data'];
+
+                          // 二级分类子类数量
+                          int _count = subItems.length;
                           // 每行个数
                           int _rowCount = 3;
                           // 每行高度固定
@@ -245,7 +274,7 @@ class _DepartmentState extends State<Department> {
                                   height: 35.0,
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    '标题',
+                                    title,
                                     style: TextStyle(
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.bold,
@@ -276,33 +305,42 @@ class _DepartmentState extends State<Department> {
                                     itemCount: _count,
                                     itemBuilder:
                                         (BuildContext context, int index) {
-                                      return Container(
-                                        padding: EdgeInsets.only(
-                                          top: 10.0,
-                                          bottom: 10.0,
-                                        ),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Image.network(
-                                              'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1725340245,2397117074&fm=26&gp=0.jpg',
-                                              width: 60.0,
-                                              height: 60.0,
-                                              fit: BoxFit.fill,
-                                            ),
-                                            Divider(
-                                                height: 10.0,
-                                                color: Colors.transparent),
-                                            Container(
-                                              height: 15.0,
-                                              child: Text(
-                                                '肉类零食',
-                                                style: TextStyle(
-                                                  fontSize: 12.0,
-                                                  color: Color(0xFF1C1C1D),
-                                                ),
+                                      // 二级分类子类
+                                      Map subItem = subItems[index];
+
+                                      return GestureDetector(
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                              context, '/product');
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                            top: 10.0,
+                                            bottom: 10.0,
+                                          ),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Image.network(
+                                                subItem['image'],
+                                                width: 60.0,
+                                                height: 60.0,
+                                                fit: BoxFit.fill,
                                               ),
-                                            )
-                                          ],
+                                              Divider(
+                                                  height: 10.0,
+                                                  color: Colors.transparent),
+                                              Container(
+                                                height: 15.0,
+                                                child: Text(
+                                                  subItem['title'],
+                                                  style: TextStyle(
+                                                    fontSize: 12.0,
+                                                    color: Color(0xFF1C1C1D),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       );
                                     },
@@ -312,7 +350,7 @@ class _DepartmentState extends State<Department> {
                             ),
                           );
                         },
-                        childCount: 10,
+                        childCount: data.length,
                       ),
                     ),
                   ],

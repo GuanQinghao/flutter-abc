@@ -5,40 +5,55 @@ class Cart extends StatefulWidget {
   _CartState createState() => _CartState();
 }
 
-class _CartState extends State<Cart> {
+class _CartState extends State<Cart> with AutomaticKeepAliveClientMixin {
   // 是否全选
   bool _isSelectedAll = false;
   // 是否是编辑状态
   bool _editable = false;
+  // 购物车商品列表
+  List<Map<String, dynamic>> products = [
+    {
+      'title':
+          'OPPO Find X2 超感官旗舰 3K分辨率 120Hz超感屏 多焦段影像系统 骁龙865 65w闪充 8GB+256GB碧波 双模5G手机',
+      'image':
+          'https://img14.360buyimg.com/n0/jfs/t1/114393/1/1069/692776/5e94670fEa28b8cd3/228f1632e85e8337.jpg',
+      'price': 5999.00,
+      'count': 1,
+      'isSelected': 1,
+    },
+    {
+      'title': 'Apple iPhone XS (A2100) 64GB 金色 移动联通电信4G手机',
+      'image':
+          'https://img14.360buyimg.com/n0/jfs/t1/1468/11/3377/138213/5b997bf3Eda5b24a4/0ace3ed19582dbe6.jpg',
+      'price': 5199.00,
+      'count': 2,
+      'isSelected': 0,
+    },
+    {
+      'title':
+          'Apple 2019款 MacBook Pro 13.3【带触控栏】八代i5 8G 256G RP645显卡 深空灰 笔记本电脑 MUHP2CH/A',
+      'image':
+          'https://img14.360buyimg.com/n0/jfs/t1/50965/16/16199/67242/5dd26e06E686fcc3b/c39fe0cb7ab36c13.jpg',
+      'price': 10799.00,
+      'count': 1,
+      'isSelected': 1,
+    },
+    {
+      'title': '飞天茅台 53度 500ml 2014年',
+      'image':
+          'https://img14.360buyimg.com/n0/jfs/t1/85310/26/12386/252984/5e464d9eEf4a2981c/b51005d0450609d3.jpg',
+      'price': 3169.00,
+      'count': 6,
+      'isSelected': 0,
+    },
+  ];
 
-  List<Map<String, dynamic>> items = [];
-
-  Map<String, dynamic> products = <String, dynamic>{
-    'title': '潮男长袖T恤-李宁长袖T恤男士2020新款BADFIVE篮球系列圆领宽松休闲针织运动服',
-    'image': 'images/product.png',
-    'price': 299.00,
-    'count': 2,
-    'isSelected': 1,
-  };
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
-    // 生成商品
-    Map<String, dynamic> _getProducts() {
-      return <String, dynamic>{
-        'title': '潮男长袖T恤-李宁长袖T恤男士2020新款BADFIVE篮球系列圆领宽松休闲针织运动服',
-        'image': 'images/product.png',
-        'price': 299.00,
-        'count': 2,
-        'isSelected': 1,
-      };
-    }
-
-    items.add(_getProducts());
-    items.add(_getProducts());
-    items.add(_getProducts());
-    items.add(_getProducts());
-
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 248, 7, 53),
@@ -75,15 +90,10 @@ class _CartState extends State<Cart> {
           Expanded(
             child: Container(
               color: Color(0xFFEEEEEE),
-              padding: EdgeInsets.only(
-                bottom: 10.0,
-              ),
               child: ListView.builder(
-                itemCount: items.length,
+                itemCount: products.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return _CartProductWidget(
-                    product: items[index],
-                  );
+                  return _buildCartProductListTile(context, index);
                 },
               ),
             ),
@@ -175,16 +185,10 @@ class _CartState extends State<Cart> {
       ),
     );
   }
-}
 
-class _CartProductWidget extends StatelessWidget {
-  // 购物车中的商品
-  final Map<String, dynamic> product;
-
-  const _CartProductWidget({Key key, this.product}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  // 购物车单个商品的Widget
+  Widget _buildCartProductListTile(BuildContext context, int index) {
+    Map<String, dynamic> product = products[index];
     // 商品名称
     String _title = product['title'];
     // 商品图片
@@ -213,7 +217,6 @@ class _CartProductWidget extends StatelessWidget {
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               // 选中按钮
               Container(
@@ -224,7 +227,12 @@ class _CartProductWidget extends StatelessWidget {
                         : Icons.radio_button_unchecked,
                     size: 20.0,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    //TODO:
+                    if (mounted) {
+                      setState(() {});
+                    }
+                  },
                 ),
               ),
               // 商品图片
@@ -233,8 +241,8 @@ class _CartProductWidget extends StatelessWidget {
                   top: 10.0,
                   bottom: 10.0,
                 ),
-                child: Image.asset(
-                  'images/product.png',
+                child: Image.network(
+                  _image,
                   height: 90.0,
                   width: 90.0,
                   fit: BoxFit.cover,
@@ -263,14 +271,94 @@ class _CartProductWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
+                            // 商品价格
                             Text(
                               '¥$_price',
                               style: TextStyle(
                                 color: Colors.red,
                               ),
                             ),
+                            // 商品数量
                             Container(
-                              child: Text('x$_count'),
+                              child: Container(
+                                width: 90.0,
+                                height: 24.0,
+                                padding: EdgeInsets.only(
+                                  left: 5.0,
+                                  right: 5.0,
+                                ),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.grey[300],
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(12.0),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(
+                                        child: GestureDetector(
+                                          child: Text(
+                                            '-',
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          onTap: () {
+                                            //TODO:
+                                            if (mounted) {
+                                              setState(() {});
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: 1.0,
+                                      color: Colors.grey[300],
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(
+                                        child: Text(
+                                          '$_count',
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      width: 1.0,
+                                      color: Colors.grey[300],
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(
+                                        child: GestureDetector(
+                                          child: Icon(
+                                            Icons.add,
+                                            size: 14.0,
+                                          ),
+                                          onTap: () {
+                                            //TODO:
+                                            if (mounted) {
+                                              setState(() {});
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                         ),

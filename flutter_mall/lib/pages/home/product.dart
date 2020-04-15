@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// 商品详情页
 class Product extends StatefulWidget {
   @override
   _ProductState createState() => _ProductState();

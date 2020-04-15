@@ -3,6 +3,7 @@ import 'package:flutter_mall/pages/home/product.dart';
 import 'pages/cart/cart.dart';
 import 'pages/department/department.dart';
 import 'pages/home/home.dart';
+import 'pages/home/products.dart';
 import 'pages/login/login.dart';
 import 'pages/me/me.dart';
 import 'pages/tabs.dart';
@@ -15,6 +16,7 @@ final Map<String, WidgetBuilder> routes = {
   '/login': (BuildContext context) => Login(),
   '/home': (BuildContext context) => Home(),
   '/product': (BuildContext context) => Product(),
+  '/products': (BuildContext context) => Products(),
   '/department': (BuildContext context) => Department(),
   '/cart': (BuildContext context) => Cart(),
   '/me': (BuildContext context) => Me(),

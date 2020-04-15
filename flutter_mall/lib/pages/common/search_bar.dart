@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/pages/home/widgets/toast.dart';
+import 'package:flutter_mall/pages/common/toast.dart';
 
 // 搜索栏
 class SearchBar extends StatefulWidget implements PreferredSizeWidget {
