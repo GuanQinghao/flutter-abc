@@ -19,20 +19,17 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color.fromARGB(255, 248, 7, 53),
-      title: _InputTextFieldWidget(),
-      leading: _SearchBarScanButton(),
+      backgroundColor: Color(0xFFFF463C),
+      title: _buildInputTextFieldWidget(),
+      leading: _buildScanButton(),
       actions: <Widget>[
-        _SearchBarMessageButton(),
+        _buildMessageButton(),
       ],
     );
   }
-}
 
-// 搜索栏上的输入框
-class _InputTextFieldWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  // 搜索栏上的输入框
+  Widget _buildInputTextFieldWidget() {
     return Container(
       // 装饰
       decoration: BoxDecoration(
@@ -77,7 +74,7 @@ class _InputTextFieldWidget extends StatelessWidget {
               hintMaxLines: 1,
               hintStyle: TextStyle(
                 fontSize: 14.0,
-                color: Color.fromARGB(255, 173, 173, 173),
+                color: Color(0xFFACACAC),
               ),
               hasFloatingPlaceholder: false,
             ),
@@ -86,12 +83,9 @@ class _InputTextFieldWidget extends StatelessWidget {
       ),
     );
   }
-}
 
-// 搜索栏上的扫一扫按钮
-class _SearchBarScanButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  // 搜索栏上的扫一扫按钮
+  Widget _buildScanButton() {
     return Container(
       child: FlatButton(
         padding: EdgeInsets.all(0.0),
@@ -120,12 +114,9 @@ class _SearchBarScanButton extends StatelessWidget {
       ),
     );
   }
-}
 
-// 搜索栏上的消息按钮
-class _SearchBarMessageButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  // 搜索栏上的消息按钮
+  Widget _buildMessageButton() {
     return Container(
       width: 56.0,
       child: FlatButton(

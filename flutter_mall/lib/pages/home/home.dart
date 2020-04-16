@@ -62,7 +62,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       () {
         // 打印滚动位置
         // print(_controller.offset);
-
         if (_controller.offset < MediaQuery.of(context).size.height &&
             showTopButton) {
           setState(() {
@@ -104,7 +103,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           // 轮播图
           _buildSliderWidget(),
           // 广告图
-          _buildAdvertisingWidget(),
+          _buildAdvertisementWidget(),
           // 秒杀
           _buildRecommendProductsWidget(),
           // 1楼标题
@@ -140,7 +139,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 // 动效返回顶部
                 _controller.animateTo(
                   0.0,
-                  duration: Duration(milliseconds: 500),
+                  duration: Duration(
+                    milliseconds: 500,
+                  ),
                   curve: Curves.easeIn,
                 );
               },
@@ -179,7 +180,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           color: Colors.transparent,
           child: Container(
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              borderRadius: BorderRadius.all(
+                Radius.circular(8.0),
+              ),
               child: Image.network(
                 'http://photo.16pic.com/00/53/72/16pic_5372081_b.jpg',
                 fit: BoxFit.fill,
@@ -193,7 +196,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   }
 
   // 首页广告图片
-  Widget _buildAdvertisingWidget() {
+  Widget _buildAdvertisementWidget() {
     return GestureDetector(
       child: Container(
         color: Color(0xFFEEEEEE),
@@ -217,7 +220,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   // 楼层标题
   Widget _buildFloorHeaderWidget(String title) {
     return Container(
-      color: Color(0xffeeeeee),
+      color: Color(0xFFEEEEEE),
       height: 56.0,
       padding: EdgeInsets.only(
         top: 10.0,
@@ -235,7 +238,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               style: TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 34, 34, 34),
+                color: Color(0xFF222222),
               ),
             ),
             Container(
@@ -247,12 +250,12 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                       style: TextStyle(
                         fontSize: 13.0,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 160, 160, 160),
+                        color: Color(0xFFA0A0A0),
                       ),
                     ),
                     Icon(
                       Icons.arrow_forward_ios,
-                      color: Color.fromARGB(255, 160, 160, 160),
+                      color: Color(0xFFA0A0A0),
                       size: 13.0,
                     )
                   ],
@@ -295,7 +298,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     ___buildFlashSaleWidget(),
                     Divider(
                       height: 1.0,
-                      color: Color.fromARGB(255, 224, 224, 224),
+                      color: Color(0xFFEEEEEE),
                     ),
                     // 券多多
                     __buildDomesticProductsWidget('券多多', '券多多优惠'),
@@ -304,7 +307,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               ),
               VerticalDivider(
                 width: 1.0,
-                color: Color.fromARGB(255, 224, 224, 224),
+                color: Color(0xFFEEEEEE),
               ),
               Container(
                 width: 0.5 * (MediaQuery.of(context).size.width - 21.0),
@@ -314,7 +317,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     __buildDomesticProductsWidget('国货专区', '品质新生活'),
                     Divider(
                       height: 1.0,
-                      color: Color.fromARGB(255, 224, 224, 224),
+                      color: Color(0xFFEEEEEE),
                     ),
                     // 抽奖
                     __buildDomesticProductsWidget('抽奖试手气', '试手气乐乐乐')
@@ -336,7 +339,12 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         children: <Widget>[
           Container(
             height: 45.0,
-            padding: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
+            padding: EdgeInsets.only(
+              left: 10.0,
+              top: 20.0,
+              right: 10.0,
+              bottom: 10.0,
+            ),
             child: __buildFlashSaleCountdownWidget(),
           ),
           Container(
@@ -364,12 +372,15 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         children: <Widget>[
           Container(
             child: Image(
-              image: AssetImage('images/flash_sale.png'),
+              image: AssetImage(
+                'images/flash_sale.png',
+              ),
               fit: BoxFit.fitHeight,
               height: 20.0,
             ),
           ),
           Container(
+            //TODO:
             child: Container(),
           ),
         ],
@@ -381,7 +392,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   Widget __buildFlashSaleProductWidget() {
     return GestureDetector(
       child: Container(
-        padding: EdgeInsets.all(0.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -405,7 +415,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 style: TextStyle(
                   fontSize: 14.0,
                   fontWeight: FontWeight.w600,
-                  color: Color.fromARGB(255, 237, 0, 45),
+                  color: Color(0xFFEF003C),
                 ),
               ),
             ),
@@ -418,7 +428,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 style: TextStyle(
                   decoration: TextDecoration.lineThrough,
                   fontSize: 10.0,
-                  color: Color.fromARGB(255, 160, 160, 160),
+                  color: Color(0xFFA0A0A0),
                 ),
               ),
             ),
@@ -454,7 +464,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 34, 34, 34),
+                  color: Color(0xFF222222),
                 ),
               ),
             ),
@@ -465,7 +475,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 255, 84, 5),
+                  color: Color(0xFFFF5405),
                 ),
               ),
             ),
@@ -482,7 +492,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     ),
                   ),
                   Container(
-                    // color: Colors.blue,
                     child: Image(
                       image: AssetImage('images/product.png'),
                       width: 70.0,
@@ -514,7 +523,9 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         // 圆角
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8.0),
+          ),
         ),
         child: Container(
           padding: EdgeInsets.all(10.0),
@@ -534,7 +545,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   children: <Widget>[
                     __buildSnappedProductWidget(0),
                     Container(
-                      // color: Colors.yellow,
                       height: 5.0,
                       width: 5.0,
                     ),
@@ -543,7 +553,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 ),
               ),
               Container(
-                // color: Colors.yellow,
                 height: 5.0,
                 width: 5.0,
               ),
@@ -552,7 +561,6 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   children: <Widget>[
                     __buildSnappedProductWidget(1),
                     Container(
-                      // color: Colors.yellow,
                       height: 5.0,
                       width: 5.0,
                     ),
@@ -570,7 +578,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   // 1楼畅销商品
   Widget __buildSaleProductWidget() {
     return Container(
-      color: Color.fromARGB(25, 247, 0, 47),
+      color: Color(0xFFFF463C),
       height: 196.0,
       child: Container(
         padding: EdgeInsets.only(
@@ -591,7 +599,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 247, 0, 47),
+                      color: Color(0xFFFF463C),
                     ),
                   ),
                   Image.asset(
@@ -609,7 +617,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 '最低价 9.9包邮',
                 style: TextStyle(
                   fontSize: 13.0,
-                  color: Color.fromARGB(255, 160, 160, 160),
+                  color: Color(0xFFA0A0A0),
                 ),
               ),
             ),
@@ -619,8 +627,10 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               child: Container(
                 // 圆角
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 74, 109),
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  color: Color(0xFFFF463C),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8.0),
+                  ),
                 ),
                 padding: EdgeInsets.only(
                   left: 6.0,
@@ -630,7 +640,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   '儿童小零食1238g',
                   style: TextStyle(
                     fontSize: 9.0,
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -656,7 +666,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                       style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 255, 74, 109),
+                        color: Color(0xFFFF463C),
                       ),
                     ),
                   ),
@@ -678,7 +688,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       child: Stack(
         children: <Widget>[
           Container(
-            color: Color(0xffeeeeee),
+            color: Color(0xFFEEEEEE),
             height: 96.0,
             width: 96.0,
             child: Column(
@@ -698,7 +708,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     style: TextStyle(
                       fontSize: 11.0,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 34, 34, 34),
+                      color: Color(0xFF222222),
                     ),
                   ),
                 ),
@@ -732,7 +742,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                   ),
                   alignment: Alignment.centerRight,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 247, 0, 47),
+                    color: Color(0xFFFF463C),
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(6.0),
                       bottomRight: Radius.circular(6.0),
@@ -773,7 +783,12 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
           ),
         ),
         child: Container(
-          padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 10.0),
+          padding: EdgeInsets.only(
+            left: 10.0,
+            top: 15.0,
+            right: 10.0,
+            bottom: 10.0,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -852,8 +867,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         padding: EdgeInsets.all(10.0),
         height: 110.0,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 249, 249, 249),
-          // color: Colors.red,
+          color: Color(0xFFFAFAFA),
           borderRadius: BorderRadius.all(
             Radius.circular(4.0),
           ),
@@ -883,7 +897,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                           right: 8.0,
                         ),
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 255, 0, 47),
+                          color: Color(0xFFFF463C),
                           borderRadius: BorderRadius.all(
                             Radius.circular(8.0),
                           ),
@@ -905,7 +919,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                       '¥189',
                       style: TextStyle(
                         fontSize: 15.0,
-                        color: Color.fromARGB(255, 255, 0, 47),
+                        color: Color(0xFFFF463C),
                       ),
                     ),
                   ),
@@ -948,20 +962,17 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 0, 47),
+                  color: Color(0xFFFF463C),
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.only(
-                  // top: 5.0,
-                  ),
               child: Text(
                 '2302已售',
                 style: TextStyle(
                   fontSize: 10.0,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 51, 51, 51),
+                  color: Color(0xFF333333),
                 ),
               ),
             ),
@@ -992,7 +1003,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
             child: Column(
               children: <Widget>[
                 // 广告图
-                __buildHotAdvertisingImageWidget(),
+                __buildHotAdvertisementImageWidget(),
                 Container(
                   height: 265,
                   child: GridView.builder(
@@ -1018,7 +1029,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   }
 
   // 热门推荐广告图片
-  Widget __buildHotAdvertisingImageWidget() {
+  Widget __buildHotAdvertisementImageWidget() {
     return Container(
       height: 110.0,
       padding: EdgeInsets.only(
@@ -1050,7 +1061,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         Navigator.pushNamed(context, '/product');
       },
       child: Container(
-        color: Color(0xffeeeeee),
+        color: Color(0xFFEEEEEE),
         child: Column(
           children: <Widget>[
             Image.network(
@@ -1060,7 +1071,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
               fit: BoxFit.fill,
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+              padding: EdgeInsets.only(
+                left: 10.0,
+                top: 5.0,
+                right: 10.0,
+              ),
               alignment: Alignment.centerLeft,
               child: Text(
                 item.itemTitle,
@@ -1069,19 +1084,23 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 34, 34, 34),
+                  color: Color(0xFF222222),
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+              padding: EdgeInsets.only(
+                left: 10.0,
+                top: 5.0,
+                right: 10.0,
+              ),
               alignment: Alignment.centerLeft,
               child: Text(
                 '¥' + item.marketPrice.toString(),
                 style: TextStyle(
                   fontSize: 12.0,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 247, 0, 47),
+                  color: Color(0xFFFF463C),
                 ),
               ),
             ),
@@ -1101,7 +1120,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
         right: 5.0,
       ),
       decoration: BoxDecoration(
-        color: Color(0xffeeeeee),
+        color: Color(0xFFEEEEEE),
       ),
       child: Container(
         height: ((MediaQuery.of(context).size.width - 10.0) * 1.5 / ratio),
@@ -1139,7 +1158,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
       },
       child: Container(
         padding: EdgeInsets.all(5.0),
-        color: Color(0xffeeeeee),
+        color: Color(0xFFEEEEEE),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -1170,7 +1189,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     ),
                     // 商品标题
                     Container(
-                      padding: EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
+                      padding: EdgeInsets.only(
+                        top: 5.0,
+                        left: 5.0,
+                        right: 5.0,
+                      ),
                       child: Text(
                         title,
                         maxLines: 2,
@@ -1178,22 +1201,29 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                         style: TextStyle(
                           fontSize: 13.0,
                           fontWeight: FontWeight.w500,
-                          color: Color.fromARGB(255, 28, 28, 28),
+                          color: Color(0xFF1C1C1D),
                         ),
                       ),
                     ),
                     // 商品价格
                     Container(
-                      padding: EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
+                      padding: EdgeInsets.only(
+                        top: 5.0,
+                        left: 5.0,
+                        right: 5.0,
+                      ),
                       child: Row(
                         children: <Widget>[
                           Container(
-                            padding: EdgeInsets.only(left: 5.0, right: 5.0),
+                            padding: EdgeInsets.only(
+                              left: 5.0,
+                              right: 5.0,
+                            ),
                             child: Text(
                               '¥' + price,
                               style: TextStyle(
                                 fontSize: 15.0,
-                                color: Color.fromARGB(255, 247, 0, 47),
+                                color: Color(0xFFFF463C),
                               ),
                             ),
                           ),
@@ -1203,7 +1233,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                               style: TextStyle(
                                 fontSize: 10.0,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 173, 173, 173),
+                                color: Color(0xFFACACAC),
                               ),
                             ),
                           ),
@@ -1212,7 +1242,11 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                     ),
                     // 商品店铺和销量
                     Container(
-                      padding: EdgeInsets.only(top: 5.0, left: 5.0, right: 5.0),
+                      padding: EdgeInsets.only(
+                        top: 5.0,
+                        left: 5.0,
+                        right: 5.0,
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -1223,20 +1257,20 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                                 Icon(
                                   Icons.location_on,
                                   size: 10.0,
-                                  color: Color.fromARGB(255, 51, 51, 51),
+                                  color: Color(0xFF333333),
                                 ),
                                 Text(
                                   '万达专营店',
                                   style: TextStyle(
                                     fontSize: 11.0,
-                                    color: Color.fromARGB(255, 135, 135, 135),
+                                    color: Color(0xFF878787),
                                   ),
                                 ),
                                 Text(
                                   '1.2km',
                                   style: TextStyle(
                                     fontSize: 11.0,
-                                    color: Color.fromARGB(255, 97, 97, 97),
+                                    color: Color(0xFF878787),
                                   ),
                                 ),
                               ],
@@ -1248,7 +1282,7 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
                               '月销' + count,
                               style: TextStyle(
                                 fontSize: 11.0,
-                                color: Color.fromARGB(255, 135, 135, 135),
+                                color: Color(0xFF878787),
                               ),
                             ),
                           ),

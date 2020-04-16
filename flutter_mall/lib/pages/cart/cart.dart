@@ -56,7 +56,7 @@ class _CartState extends State<Cart> with AutomaticKeepAliveClientMixin {
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 248, 7, 53),
+        backgroundColor: Color(0xFFFF463C),
         centerTitle: true,
         title: Text(
           '购物车',
@@ -162,9 +162,7 @@ class _CartState extends State<Cart> with AutomaticKeepAliveClientMixin {
                 Container(
                   child: RaisedButton(
                     onPressed: () {
-                      setState(() {
-                        _editable = !_editable;
-                      });
+                      setState(() {});
                     },
                     child: Text(
                       '结算',
