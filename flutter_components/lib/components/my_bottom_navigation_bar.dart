@@ -64,19 +64,19 @@ class __MyBottomNavigationBarState extends State<_MyBottomNavigationBar> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
-            title: Text('信息'),
+            label: '信息',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.contacts),
-            title: Text('通讯录'),
+            label: '通讯录',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_pin_circle),
-            title: Text('发现'),
+            label: '发现',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
-            title: Text('发现'),
+            label: '发现',
           ),
         ],
         currentIndex: _selectedIndex,

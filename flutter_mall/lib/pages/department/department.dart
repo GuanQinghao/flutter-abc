@@ -46,22 +46,22 @@ class _DepartmentState extends State<Department>
       'data': [
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '饼干高点',
         },
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '糖果',
         },
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '肉类零食',
         },
         {
           'image':
-              'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2280544595,1441228656&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '薯条饼干',
         },
       ],
@@ -76,37 +76,37 @@ class _DepartmentState extends State<Department>
         },
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '绿茶',
         },
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '花茶',
         },
         {
           'image':
-              'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2280544595,1441228656&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '茉莉茶',
         },
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '红茶',
         },
         {
           'image':
-              'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2280544595,1441228656&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '白茶',
         },
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '黑茶',
         },
         {
           'image':
-              'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=293987166,3859526598&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '其他',
         },
       ],
@@ -116,27 +116,27 @@ class _DepartmentState extends State<Department>
       'data': [
         {
           'image':
-              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=565066516,134157532&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '5G手机',
         },
         {
           'image':
-              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=947636479,2923560241&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '游戏手机',
         },
         {
           'image':
-              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=565066516,134157532&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '拍照手机',
         },
         {
           'image':
-              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=947636479,2923560241&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '老人机',
         },
         {
           'image':
-              'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=947636479,2923560241&fm=11&gp=0.jpg',
+              'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1174019095,4181335453&fm=15&gp=0.jpg',
           'title': '学生机',
         },
       ],

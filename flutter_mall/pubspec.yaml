@@ -14,25 +14,25 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
   # 网络请求
-  dio: ^3.0.9
+  dio: ^3.0.10
   # Preferences存储
-  shared_preferences: ^0.5.6+3
+  shared_preferences: ^0.5.12+2
   # 文件管理
-  path_provider: ^1.6.5
+  path_provider: ^1.6.22
   # cookies管理
   cookie_jar: ^1.0.1
   dio_cookie_manager: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+  cupertino_icons: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -54,14 +54,22 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
+  
   assets:
-    - images/home_ad.png
-    - images/home_arc_bg.png
     - images/product.png
     - images/flash_sale.png
     - images/fire.png
     - images/guo.png
+
+  # 首页
+    - images/home_ad.png
+    - images/home_arc_bg.png
+    - images/home_checkin.png
+    - images/home_fortune.png
+    - images/home_invite.png
+    - images/home_member.png
+    - images/home_news.png
+    - images/home_news_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

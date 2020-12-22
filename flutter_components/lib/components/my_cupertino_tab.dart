@@ -28,11 +28,11 @@ class _MyCupertinoTabPageState extends State<MyCupertinoTabPage> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
-            title: Text('主页'),
+            label: '主页',
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.conversation_bubble),
-            title: Text('聊天'),
+            label: '聊天',
           ),
         ],
       ),

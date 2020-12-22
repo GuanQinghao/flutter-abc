@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyFloatingActionButton extends StatelessWidget {
-  String title = 'Flutter 悬浮按钮组件示例';
+  final String title = 'Flutter 悬浮按钮组件示例';
 
   @override
   Widget build(BuildContext context) {
