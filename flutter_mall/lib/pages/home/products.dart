@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mall/pages/common/toast.dart';
 
 // 商品列表页
-
 class Products extends StatefulWidget {
   @override
   _ProductsState createState() => _ProductsState();
@@ -118,7 +117,7 @@ class _ProductsState extends State<Products> {
                 fontSize: 14.0,
                 color: Color.fromARGB(255, 173, 173, 173),
               ),
-              hasFloatingPlaceholder: false,
+              floatingLabelBehavior: FloatingLabelBehavior.auto,
             ),
           ),
         ),

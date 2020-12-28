@@ -76,7 +76,7 @@ class _SearchBarState extends State<SearchBar> {
                 fontSize: 14.0,
                 color: Color(0xFFACACAC),
               ),
-              hasFloatingPlaceholder: false,
+              floatingLabelBehavior: FloatingLabelBehavior.auto,
             ),
           ),
         ),
@@ -140,7 +140,7 @@ class _SearchBarState extends State<SearchBar> {
           ],
         ),
         onPressed: () {
-          Toast.toast(context, '点击扫一扫按钮');
+          Toast.toast(context, '点击消息按钮');
           print(context);
         },
       ),
